@@ -26,16 +26,13 @@ mongodbClient.connect().then(result=>{
 ////////////////////////////////////////////
 //peerjs
 
-const { PeerServer } = require('peer');
 var ExpressPeerServer = require('peer').ExpressPeerServer;
 var options = {
     debug: true
 }
 
-const peerServer = PeerServer({ port: 443, path: '/api/v1/peerjs' });
-
 // peerjs is the path that the peerjs server will be connected to.
-//app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
+app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
 
 
 var serviceAccount = require("./aji-creative-firebase-adminsdk-pda2z-294463c310.json");
