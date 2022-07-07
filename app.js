@@ -33,7 +33,9 @@ var options = {
 // peerjs is the path that the peerjs server will be connected to.
 app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
 
-
+app.get("/", (req,res)=>{
+    req.send("hello")
+})
 
 
 var serviceAccount = require("./aji-creative-firebase-adminsdk-pda2z-294463c310.json");
