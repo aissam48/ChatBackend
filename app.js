@@ -34,7 +34,7 @@ var options = {
 app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
 
 app.get("/", (req,res)=>{
-    req.send("hello")
+    res.send("hello")
 })
 
 
