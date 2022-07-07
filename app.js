@@ -32,7 +32,7 @@ var options = {
     debug: true
 }
 
-const peerServer = PeerServer({ port: 9000, path: '/api/v1/peerjs' });
+const peerServer = PeerServer({ port: 443, path: '/api/v1/peerjs' });
 
 // peerjs is the path that the peerjs server will be connected to.
 //app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
