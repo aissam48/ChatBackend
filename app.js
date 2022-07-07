@@ -24,14 +24,7 @@ mongodbClient.connect().then(result=>{
 })
 
 ////////////////////////////////////////////
-//peerjs
-var ExpressPeerServer = require('peer').ExpressPeerServer;
-var options = {
-    debug: true
-}
 
-// peerjs is the path that the peerjs server will be connected to.
-app.use('/api/v1/peerjs', ExpressPeerServer(http, options));
 
 app.get("/", (req,res)=>{
     res.send("hello")
