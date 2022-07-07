@@ -22,9 +22,9 @@ exports.callOther = (client, io)=>{
     client.on("make_call", (data)=>{
         //data:{current_user_idreceiver_id group_id}
         const jsonData = JSON.parse(data)
-        client.broadcast.emit("receive_call", jsonData)
+        //client.broadcast.emit("receive_call", jsonData)
         console.log("make_call event")
-        //io.to(jsonData.receiver_id).emit("receive_call", jsonData)
+        io.to(jsonData.receiver_id).emit("receive_call", jsonData)
     })
 }
 
