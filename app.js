@@ -26,20 +26,13 @@ mongodbClient.connect().then(result=>{
 ////////////////////////////////////////////
 
 
-app.get("/", (req,res)=>{
-    res.send("hello")
-})
-
-
 var serviceAccount = require("./aji-creative-firebase-adminsdk-pda2z-294463c310.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 })
 
-app.get("/", (req,res)=>{
-    res.send("heelo")
-})
+
 app.use('/api/v1', require('./src/routes/routes'))
 
 
