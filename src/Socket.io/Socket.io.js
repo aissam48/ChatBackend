@@ -62,6 +62,7 @@ exports.joinChat = (client, io, mongodbClient)=>{
         client.join(userId)
         // Update user login status
 
+        console.log()
         const chatDb = mongodbClient.db("chatDb")
         const users = chatDb.collection("users")
         users.updateOne({_id:ObjectId(userId)}, {$set:{is_connected: true}})
