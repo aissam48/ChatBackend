@@ -73,6 +73,7 @@ io.on('connection', client => {
 
     ////////////////////////////////////////////////////////////
     socketF.lostInternet(client, io, mongodbClient)
+    
 
 
 });
