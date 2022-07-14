@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongodb")
 const moment = require("moment")
+const { default: mongoose } = require("mongoose")
 
 exports.joinChatRoom = (client)=>{
     client.on("user_join_chat_room", (chatId)=>{
@@ -94,5 +95,29 @@ exports.logOut = (client, io, mongodbClient)=>{
                 client.broadcast.emit("user_disconnected", user)
             })
         })
+    })
+}
+
+
+
+
+exports.lostInternet = (client, io, mongodbClient)=>{
+    client.on("disconnecting", async (data)=>{
+        for await (const _id of client.rooms) {
+
+            if (mongoose.isValidObjectId(_id)) {
+                const chatDb = mongodbClient.db("chatDb")
+                const users = chatDb.collection("users")
+                users.updateOne({_id: ObjectId(_id)}, {$set:{"is_connected": false, "last_opened": moment().format()}}).then(result=>{
+                    users.findOne({_id: ObjectId(_id)}).then(user=>{
+                        //notify all users which insid chat room with this user he logout
+                        if(user != null){
+                        client.broadcast.emit("user_disconnected", user)
+                        }
+                    })
+                })
+            }
+
+          }
     })
 }
