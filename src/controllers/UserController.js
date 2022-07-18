@@ -184,6 +184,7 @@ exports.signUp = (req, res)=>{
                 last_name : body.last_name,
                 password : body.password,
                 is_connected: true,
+                at_another_call:false,
                 groups: [],
                 last_opened: moment().format(),
                 photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR3P7UgoWenR_4NjJlHEryCvsGfQ2tclslXvGjudnXJXFOmaL9BBau7279gj_d_mrD6dw&usqp=CAU",
@@ -287,6 +288,7 @@ exports.userInfo = (req, res)=>{
                 groups: userResult.groups,
                 last_opened: userResult.last_opened,
                 photo_url: userResult.photo_url,
+                at_another_call: userResult.at_another_call
                                 
             }
 
@@ -335,7 +337,8 @@ exports.searchUsers = (req, res)=>{
                 is_connected: user.is_connected,
                 groups: user.groups,
                 last_opened: user.last_opened,
-                photo_url: user.photo_url,               
+                photo_url: user.photo_url,
+                at_another_call:user.at_another_call              
             }
 
             if(name.includes(sequence)){

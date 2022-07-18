@@ -63,13 +63,13 @@ io.on('connection', client => {
     socketF.logOut(client, io, mongodbClient)
  
     ////////////////////////////////////////////////////////////
-    socketF.callOther(client, io)
+    socketF.callOther(client, io, mongodbClient)
 
     ////////////////////////////////////////////////////////////
     socketF.answerOther(client, io)
 
     ////////////////////////////////////////////////////////////
-    socketF.endCall(client, io)
+    socketF.endCall(client, io, mongodbClient)
 
     ////////////////////////////////////////////////////////////
     socketF.lostInternet(client, io, mongodbClient)
